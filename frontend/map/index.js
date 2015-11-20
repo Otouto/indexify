@@ -3,5 +3,5 @@
 import './style.styl'
 
 export default function (text) {
-    alert(`Param in: ${text}`);
+    console.log(`There will be: ${text}`);
 };

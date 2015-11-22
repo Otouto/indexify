@@ -5,9 +5,9 @@ import { initModal } from './modal/modal';
 
 let inited = false;
 
-exports.init = function (id) {
+exports.init = function (btnId, inputId) {
     if (!inited) {
         initModal();
-        initMap(id);
+        initMap(btnId, inputId);
     }
 };

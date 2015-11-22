@@ -6,21 +6,15 @@ var modalEl = document.createElement('div'),
     modalPopupEl = document.createElement('div'),
     mapEl = document.createElement('div');
 
-function close() {
-    modalEl.classList.remove('in-modal_show');
-}
-
 function closeClick (e) {
     if (e.target.className.indexOf('in-modal_show') > -1) {
-        close();
-        unsubscribeClose();
+        hideModal();
     }
 }
 
 function closeEscape (e) {
     if (e.keyCode == 27) {
-        close();
-        unsubscribeClose();
+        hideModal();
     }
 }
 
@@ -34,7 +28,7 @@ function unsubscribeClose () {
     modalEl.removeEventListener('click', closeClick, false);
 }
 
-export function initModal() {
+function initModal() {
 
     modalEl.classList.add('in-modal');
     modalPopupEl.classList.add('in-modal-popup');
@@ -45,7 +39,14 @@ export function initModal() {
     document.body.appendChild(modalEl);
 };
 
-export function showModal () {
+function showModal () {
     modalEl.classList.add('in-modal_show');
     subscribeClose();
 }
+
+function hideModal() {
+    modalEl.classList.remove('in-modal_show');
+    unsubscribeClose();
+}
+
+export { initModal, showModal, hideModal };

@@ -1,5 +1,13 @@
 'use strict';
 
-import map from './map';
+import { initMap } from './map/map';
+import { initModal } from './modal/modal';
 
-exports.init = map;
+let inited = false;
+
+exports.init = function (id) {
+    if (!inited) {
+        initModal();
+        initMap(id);
+    }
+};

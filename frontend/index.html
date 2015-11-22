@@ -49,6 +49,13 @@
             box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.25);
         }
 
+        .in-form__field_zip {
+            width: 90%;
+            display: inline-block;
+            vertical-align: top;
+            border-right: 0;
+        }
+
         .in-form__field_label {
             display: inline;
             font-size: 12px;
@@ -88,11 +95,24 @@
         }
 
         .in-marker {
-            background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI1MTJweCIgaGVpZ2h0PSI1MTJweCIgdmlld0JveD0iMCAwIDUxMiA1MTIiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDUxMiA1MTIiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwYXRoIGQ9Ik0yNTYsMEMxNjcuNjQxLDAsOTYsNzEuNjI1LDk2LDE2MGMwLDI0Ljc1LDUuNjI1LDQ4LjIxOSwxNS42NzIsNjkuMTI1QzExMi4yMzQsMjMwLjMxMywyNTYsNTEyLDI1Niw1MTJsMTQyLjU5NC0yNzkuMzc1QzQwOS43MTksMjEwLjg0NCw0MTYsMTg2LjE1Niw0MTYsMTYwQzQxNiw3MS42MjUsMzQ0LjM3NSwwLDI1NiwweiBNMjU2LDI1NmMtNTMuMDE2LDAtOTYtNDMtOTYtOTZzNDIuOTg0LTk2LDk2LTk2YzUzLDAsOTYsNDMsOTYsOTZTMzA5LDI1NiwyNTYsMjU2eiIvPjwvc3ZnPg==);
-            background-size: contain;
-            width: 20px;
-            height: 20px;
-            display: inline;
+            background-image: url('marker.svg');
+            background-size: 30px 30px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #FFCE5A;
+            vertical-align: top;
+            width: calc(10% - 2px);
+            margin: 3px 0 0 -5px;
+            height: 38px;
+            border: 1px solid #c6c6c6;
+            border-left: 0;
+            display: inline-block;
+            cursor: pointer;
+            box-shadow: 0px 1px 0px 0px rgba(0,0,0,0.25);
+        }
+
+        .in-marker:hover {
+            background-color: #EDBF53;
         }
     </style>
 </head>
@@ -106,12 +126,13 @@
         <label class="in-form__field_label"for="address">Address</label>
         <input class="in-form__field" type="text" id="address" tabindex="3"/>
         <label class="in-form__field_label"for="zip">Postal code</label>
-        <input class="in-form__field" type="text" id="zip" tabindex="4"/>
-        <span class="in-marker" />
+        <input class="in-form__field in-form__field_zip" type="text" id="zip" tabindex="4"/>
+        <span class="in-marker"> </span>
 
         <a class="in-form__submit" href="#">Check out</a>
     </form>
 
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDZ3wifCPoXXG7bTd6QSTmI6XoZ-iQ-gc"></script>
     <script type="text/javascript">
         var subBtn = document.querySelector('.in-form__submit');
 
@@ -120,7 +141,8 @@
         }, false)
 
         //enty point to plugin
-        indexify.init('#zip');
+        indexify.init('.in-marker');
     </script>
+
 </body>
 </html>

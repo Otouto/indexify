@@ -12,6 +12,8 @@ module.exports = {
     library: 'indexify'
   },
 
+  devtool: '#cheap-module-inline-source-map',
+
   resolve: {
     modulesDirectories: ['node_modules'],
     extensions:         ['', '.js', '.styl']
@@ -39,13 +41,14 @@ module.exports = {
     }, {
       test:   /\.(png|jpg|svg|ttf|eot|woff|woff2)$/,
       loader: 'file?name=[path][name].[ext]?[hash]'
+    }, {
+      test:   /\.html$/,
+      loader: 'file?name=[path][name].[ext]?[hash]'
     }]
 
   },
 
   devServer: {
-      host: 'localhost',
-      port: '3030',
       hot: true
   }
 };

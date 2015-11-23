@@ -1,5 +1,8 @@
 'use strict';
 
+const NODE_ENV = process.env.NODE_ENV || 'dev',
+    webpack = require('webpack');
+
 module.exports = {
   context: __dirname + '/frontend',
   entry:  {
@@ -12,7 +15,7 @@ module.exports = {
     library: 'indexify'
   },
 
-  devtool: '#cheap-module-inline-source-map',
+  devtool: NODE_ENV == 'dev' ? '#cheap-module-inline-source-map' : null,
 
   resolve: {
     modulesDirectories: ['node_modules'],
@@ -48,7 +51,22 @@ module.exports = {
 
   },
 
+  plugins: [],
+
   devServer: {
       hot: true
   }
 };
+
+if (NODE_ENV == 'prod') {
+  module.exports.plugins.push(
+      new webpack.optimize.UglifyJsPlugin({
+        compress: {
+          // don't show unreachable variables etc
+          warnings:     false,
+          drop_console: true,
+          unsafe:       true
+        }
+      })
+  );
+}

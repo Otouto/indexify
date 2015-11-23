@@ -15,4 +15,4 @@ Then install project dev dependencies:
 npm i
 ```
 
-Then use `npm run dev` and go to [http://localhost:3030/](http://localhost:3030/)
+Then use `npm run dev` and go to [http://localhost:8080/](http://localhost:8080/)
